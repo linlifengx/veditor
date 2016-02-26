@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>veditor</title>{% for (var css in o.htmlWebpackPlugin.files.css) { %}
+    <link href="{%=o.htmlWebpackPlugin.files.css[css] %}" rel="stylesheet">{% } %}
+    <script src="assets/lib/ace-min-noconflict/ace.js"></script>
+    <script src="assets/lib/ace-min-noconflict/keybinding-vim.js"></script>
+    <script src="assets/lib/ace-min-noconflict/keybinding-emacs.js"></script>
+    <script src="assets/lib/ace-min-noconflict/ext-searchbox.js"></script>
+    <script src="assets/lib/ace-min-noconflict/ext-whitespace.js"></script>
+    <script src="assets/lib/ace-min-noconflict/ext-language_tools.js"></script>
+  </head>
+  <body>
+    <app></app>{% for (var chunk in o.htmlWebpackPlugin.files.chunks) { %}
+    <script src="{%=o.htmlWebpackPlugin.files.chunks[chunk].entry %}"></script>{% } %}
+  </body>
+</html>
