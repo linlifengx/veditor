@@ -2,6 +2,7 @@
   menu-bar(:class="{active: active}" @click="onClick")
     template(v-for="menu in menus")
       menu-item(:model="menu")
+    a(href="https://github.com/linlifengx/veditor", target="_blank") Fork me on GitHub
 </template>
 
 <script>
