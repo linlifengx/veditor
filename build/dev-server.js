@@ -21,7 +21,8 @@ app.use(require('webpack-dev-middleware')(compiler, {
 // compilation error display
 app.use(require('webpack-hot-middleware')(compiler))
 
-app.use('/assets', express.static('src/assets'));
+app.use('/static', express.static('src/assets'));
+app.use('/preview.js', express.static('src/preview.js'));
 
 app.listen(8880, 'localhost', function (err) {
   if (err) {

@@ -40,7 +40,7 @@ export default {
       var action = item.action
       this.clicked = true
       this.reset()
-      PubSub.publish(action)
+      PubSub.publishSync(action)
     }
   }
 }

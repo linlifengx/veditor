@@ -26,6 +26,11 @@ var fileContextMenu = [
   {text: 'Delete', action: 'action-delete-file'}
 ]
 
+var htmlContextMenu = [
+  ...fileContextMenu,
+  {text: 'Preview', action: 'action-preview-html'}
+]
+
 var folderContextMenu = [...rootContextMenu, ...fileContextMenu]
 
 export default {
@@ -168,7 +173,12 @@ export default {
       } else if (this.selectNodes[this.selectNodes.length-1].isFolder) {
         this.contextMenu.menu = folderContextMenu
       } else {
-        this.contextMenu.menu = fileContextMenu
+        var name = this.selectNodes[this.selectNodes.length-1].name
+        if (name.endsWith('.html') || name.endsWith('.htm')) {
+          this.contextMenu.menu = htmlContextMenu
+        } else {
+          this.contextMenu.menu = fileContextMenu
+        }
       }
       this.contextMenu.position = {x: e.pageX, y: e.pageY}
       this.contextMenu.show = true
@@ -206,6 +216,14 @@ export default {
       if (this.selectNodes[this.selectNodes.length-1].id == id) {
         this.setSelectNodes([this.fileTree])
       }
+    })
+    PubSub.subscribe('action-preview-html', () => {
+      var currentUrl = location.href
+      if (!currentUrl.endsWith('/')) {
+        currentUrl = currentUrl + '/'
+      }
+      var url = currentUrl + 'preview' + this.getSelectPath()
+      window.open(url)
     })
   },
   components: {
