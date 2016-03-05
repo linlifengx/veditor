@@ -53,7 +53,7 @@ export default {
     document.addEventListener('click', this._documentClick, false)
   },
   destroyed () {
-    document.removeEventListener(this._chicked)
+    document.removeEventListener('click', this._chicked)
   }
 }
 </script>

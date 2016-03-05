@@ -17,7 +17,7 @@ export default {
     }
   },
   attached () {
-    this.documentClick = () => {
+    this.documentClick = (e) => {
       if (!this.model.show) {
         return
       }
@@ -26,10 +26,10 @@ export default {
       }
       this.clicked = false
     }
-    document.addEventListener('click', this.documentClick, false)
+    document.addEventListener('click', this.documentClick)
   },
   destroyed () {
-    document.removeEventListener(this.documentClick)
+    document.removeEventListener('click', this.documentClick)
   },
   methods: {
     reset () {
