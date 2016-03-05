@@ -70,7 +70,7 @@ export default {
     var editor = this._editor = ace.edit(this.$el.firstChild)
   	editor.setTheme("ace/theme/monokai_new")
   	editor.session.setMode("ace/mode/"+this.status.mode)
-    editor.session.setUseWrapMode(true);
+    //editor.session.setUseWrapMode(true);
     editor.setOptions({
       enableBasicAutocompletion: true,
       enableSnippets: true
